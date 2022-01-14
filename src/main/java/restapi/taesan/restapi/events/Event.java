@@ -2,7 +2,6 @@ package restapi.taesan.restapi.events;
 
 import lombok.*;
 
-import java.security.cert.CertPathBuilder;
 import java.time.LocalDateTime;
 
 @Builder @AllArgsConstructor @NoArgsConstructor

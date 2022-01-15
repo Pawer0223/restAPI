@@ -28,7 +28,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation 'org.modelmapper:modelmapper:2.4.4'
     compileOnly 'org.projectlombok:lombok'
     // runtimeOnly 'com.h2database:h2'
     testRuntimeOnly 'com.h2database:h2'

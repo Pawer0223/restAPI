@@ -3,6 +3,7 @@ package restapi.taesan.restapi.events;
 import lombok.val;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -48,7 +49,12 @@ public class EventController {
         Event event = modelMapper.map(eventDto, Event.class);
         event.update();
         Event newEvent = this.eventRepository.save(event);
-        URI createdUri = linkTo(EventController.class).slash(newEvent.getId()).toUri();
-        return ResponseEntity.created(createdUri).body(event);
+        WebMvcLinkBuilder selfLinkBuilder = linkTo(EventController.class).slash(newEvent.getId());
+        URI createdUri = selfLinkBuilder.toUri();
+        EventResource eventResource = new EventResource(event);
+        // 링크를 추가, 현재 self 링크는 Resouce에 붙였는데, 나머지도 Resource에 붙여도 나쁘지않음. 아직 강의에선 냅둬서 나도 냅둠.
+        eventResource.add(linkTo(EventController.class).withRel("query-events"));
+        eventResource.add(selfLinkBuilder.withRel("update-event"));
+        return ResponseEntity.created(createdUri).body(eventResource);
     }
 }

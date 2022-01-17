@@ -29,6 +29,7 @@ public class EventResource extends EntityModel<Event> { // 얘는 기본으로 J
     public EventResource(Event event) {
         super(event);
         // new Link("http://localhost:8080/api/events/3");
+
         add(linkTo(EventController.class).slash(event.getId()).withSelfRel());
     }
 }

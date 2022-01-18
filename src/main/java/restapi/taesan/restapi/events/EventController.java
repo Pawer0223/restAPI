@@ -56,7 +56,7 @@ public class EventController {
         // 링크를 추가, 현재 self 링크는 Resouce에 붙였는데, 나머지도 Resource에 붙여도 나쁘지않음. 아직 강의에선 냅둬서 나도 냅둠.
         eventResource.add(linkTo(EventController.class).withRel("query-events"));
         eventResource.add(selfLinkBuilder.withRel("update-event"));
-        eventResource.add(Link.of("/asciidoc/html5/index.html#resources-events-create").withRel("profile"));
+        eventResource.add(Link.of("/docs/index.html#resources-events-create").withRel("profile"));
         return ResponseEntity.created(createdUri).body(eventResource);
     }
 }

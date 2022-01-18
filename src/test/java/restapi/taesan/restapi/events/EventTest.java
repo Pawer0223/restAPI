@@ -1,13 +1,12 @@
 package restapi.taesan.restapi.events;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(JUnitParamsRunner.class)
+
 public class EventTest {
 
     @Test
@@ -34,9 +33,9 @@ public class EventTest {
         assertThat(event.getDescription()).isEqualTo("Spring");
     }
 
-    @Test
     // @Parameters(method = "paramsForTestFree")
-    @Parameters()
+    @ParameterizedTest()
+    @MethodSource("provideForTestFree")
     public void testFree(int basePrice, int maxPrice, boolean isFree) throws Exception {
         //given
         Event event = Event.builder()
@@ -51,7 +50,7 @@ public class EventTest {
         assertThat(event.isFree()).isEqualTo(isFree);
     }
 
-    private Object[] parametersForTestFree() {
+    private static Object[] provideForTestFree() {
         return new Object[]{
                 new Object[]{0, 0, true},
                 new Object[]{100, 0, false},
@@ -60,8 +59,8 @@ public class EventTest {
         };
     }
 
-    @Test
-    @Parameters()
+    @ParameterizedTest()
+    @MethodSource("provideForTestOffline")
     public void testOffline(String location, boolean isOffline) throws Exception {
         //given
         Event event = Event.builder()
@@ -74,7 +73,7 @@ public class EventTest {
         assertThat(event.isOffline()).isEqualTo(isOffline);
     }
 
-    private Object[] parametersForTestOffline() {
+    private static Object[] provideForTestOffline() {
         return new Object[] {
                 new Object[] {"카페", true},
                 new Object[] {null, false},

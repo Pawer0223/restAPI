@@ -1,7 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.asciidoctor.convert' version '1.5.8'
+    // id 'org.asciidoctor.convert' version '1.5.8'
+    id "org.asciidoctor.jvm.convert" version "3.3.2"
     id 'java'
 }
 
@@ -10,6 +11,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
+    asciidoctorExt
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -27,22 +29,29 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'junit:junit:4.12'
     // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
     implementation 'org.modelmapper:modelmapper:2.4.4'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.1'
-    // https://mvnrepository.com/artifact/pl.pragmatists/JUnitParams
-    testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
+    implementation 'org.projectlombok:lombok:1.18.16'
+
 
     compileOnly 'org.projectlombok:lombok'
     // runtimeOnly 'com.h2database:h2'
-    testRuntimeOnly 'com.h2database:h2'
-    // runtimeOnly 'org.postgresql:postgresql'
+    // testRuntimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.postgresql:postgresql'
     compileOnly 'org.postgresql:postgresql'
+
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    // https://mvnrepository.com/artifact/pl.pragmatists/JUnitParams
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    // asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.2.RELEASE'
+    // testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.2.RELEASE'
 }
 
 test {
@@ -51,6 +60,29 @@ test {
 }
 
 asciidoctor {
-    inputs.dir snippetsDir
+    configurations 'asciidoctorExt'
     dependsOn test
+    inputs.dir snippetsDir
 }
+
+asciidoctor.doFirst {
+    delete file('src/main/resources/static/docs')
+}
+
+bootJar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
+}
+
+//task copyDocument(type: Copy) {
+//    dependsOn asciidoctor
+//
+//    from file("build/asciidoc/html5/")
+//    into file("build/classes/static/docs")
+//}
+//
+//build {
+//    dependsOn copyDocument
+//}

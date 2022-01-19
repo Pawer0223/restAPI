@@ -48,10 +48,12 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     // https://mvnrepository.com/artifact/pl.pragmatists/JUnitParams
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
-
     asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
-    // asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.2.RELEASE'
-    // testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.2.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.0.RELEASE'
+
+
 }
 
 test {

@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import restapi.taesan.restapi.accounts.Account;
 import restapi.taesan.restapi.accounts.AccountRole;
 import restapi.taesan.restapi.accounts.AccountService;
+import restapi.taesan.restapi.common.AppProperties;
 
 import java.util.Set;
 
@@ -27,25 +28,35 @@ public class AppConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-//    /**
-//     * 앱 뜰때, 기본유저하나 생성하도록..
-//     */
-//    @Bean
-//    public ApplicationRunner applicationRunner() {
-//        return new ApplicationRunner() {
-//
-//            @Autowired
-//            AccountService accountService;
-//
-//            @Override
-//            public void run(ApplicationArguments args) throws Exception {
-//                Account taesan = Account.builder()
-//                        .email("taesan@email.com")
-//                        .password("taesan")
-//                        .roles(Set.of(AccountRole.ADMIN, AccountRole.USER))
-//                        .build();
-//                accountService.saveAccount(taesan);
-//            }
-//        };
-//    }
+    /**
+     * 앱 뜰때, 기본유저하나 생성하도록..
+     */
+    @Bean
+    public ApplicationRunner applicationRunner() {
+        return new ApplicationRunner() {
+
+            @Autowired
+            AccountService accountService;
+
+            @Autowired
+            AppProperties appProperties;
+
+            @Override
+            public void run(ApplicationArguments args) throws Exception {
+                Account admin = Account.builder()
+                        .email(appProperties.getAdminUsername())
+                        .password(appProperties.getAdminPassword())
+                        .roles(Set.of(AccountRole.ADMIN, AccountRole.USER))
+                        .build();
+                accountService.saveAccount(admin);
+
+                Account user = Account.builder()
+                        .email(appProperties.getUserUsername())
+                        .password(appProperties.getUserPassword())
+                        .roles(Set.of(AccountRole.USER))
+                        .build();
+                accountService.saveAccount(user);
+            }
+        };
+    }
 }

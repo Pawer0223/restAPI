@@ -1,3 +1,4 @@
+
 # 참조 강의
 - https://www.inflearn.com/course/spring_rest-api/dashboard
 - https://gitlab.com/whiteship
@@ -42,7 +43,7 @@
 #### 응답 데이터에 link표현을 공통적으로 처리하기위한 라이브러리.
 - 코드의 가독성과 일관성을 높일 수 있다.
 - gradle 의존성 추가
-~~~
+~~~ groovy
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 ~~~
 
@@ -50,9 +51,54 @@
 - 이 문서에 대한 정의는 개발자가 직접해야 한다.
 - 다만 이러한 문서화 작업을 편리할 수 있게 도와주는 라이브러리를 사용하자.
 - gradle 의존성 추가
-~~~
+~~~ groovy
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 ~~~
+
+# 결과 예시
+
+#### situation
+- 로그인 한 사용자가 새로운 이벤트 정보를 등록한다.
+
+#### Json Result
+- `_links` 필드를 통해 hateoas를 만족.
+- `_links.profile` 필드를 통해 self-describtive를 만족
+  - 해당 필드의 링크를 통해, 현재의 응답을 이해할 수 있는 문서를 확인할 수 있다.(restdocs를 통해 만들어 놓아야 함)
+~~~ json
+{
+  "id" : 73,
+  "name" : "spring",
+  
+  ... (중략) ...
+  
+  "basePrice" : 100,
+  "maxPrice" : 200,
+  "limitOfEnrollment" : 100,
+  "offline" : true,
+  "free" : false,
+  "eventStatus" : "DRAFT",
+  "manager" : {
+    "id" : 72
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/events/73"
+    },
+    "query-events" : {
+      "href" : "http://localhost:8080/api/events"
+    },
+    "update-event" : {
+      "href" : "http://localhost:8080/api/events/73"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resources-events-create"
+    }
+  }
+}
+~~~
+
+#### Self-Describtive 확인
+![image](https://user-images.githubusercontent.com/26343023/150488777-b4368b33-6a8b-4191-81ca-f04174cd3318.png)
 
 # Environment
 <img src="https://img.shields.io/badge/SpringBoot-2.6.2-rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/gradle-7.3.2 -rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/Junit-5.8.2-rgb(243, 156, 18).svg" />
@@ -65,5 +111,3 @@
 
 #### dependencies
 - <a href="https://github.com/Pawer0223/restAPI/blob/master/build.gradle">build.gradle</a>
-
-# 결과 확인

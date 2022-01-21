@@ -1,6 +1,6 @@
 - [참조 강의](#-----)
-- [What?](#what-)
-- [Why?](#why-)
+- [What?](#what?)
+- [Why?](#why?)
     + [Self-Describtive Message](#self-describtive-message)
     + [Hateoas](#hateoas)
 - [How To?](#how-to-)

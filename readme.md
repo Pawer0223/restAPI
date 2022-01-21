@@ -1,9 +1,11 @@
-- [참조 강의](#-----)
-- [What?](#what%3f)
-- [Why?](#why%3f)
+# 목차
+
+- [참조](#Ref)
+- [What?](#what)
+- [Why?](#why)
     + [Self-Describtive Message](#self-describtive-message)
     + [Hateoas](#hateoas)
-- [How To?](#how-to-)
+- [How To?](#how-to)
     + [Self-Describtive Message](#self-describtive-message-1)
       - [1. 미디어 타입을 정의하고 IANA에 등록하여 리턴의 Content-Type으로 사용할 수 있다.](#1--------------iana-----------content-type-----------)
       - [2. 응답 헤더에 링크를 추가한다.](#2----------------)
@@ -11,7 +13,7 @@
     + [Hateoas](#hateoas-1)
       - [1. 데이터에 링크를 나타내는 필드를 추가.](#1---------------------)
       - [2. 링크 헤더나 Location을 제공.](#2--------location----)
-- [Need To?](#need-to-)
+- [Need To?](#need-to)
       - [응답 데이터에 link표현을 공통적으로 처리하기위한 라이브러리.](#--------link----------------------)
       - [Self-Describtive하기 위해서는 API를 설명할 수 있는 문서가 필요하다.](#self-describtive--------api-------------------)
 - [결과 예시](#-----)
@@ -23,9 +25,8 @@
       - [Real](#real)
       - [Dependencies](#dependencies)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-# 참조 강의
+# Ref
 - https://www.inflearn.com/course/spring_rest-api/dashboard
 - https://gitlab.com/whiteship
 

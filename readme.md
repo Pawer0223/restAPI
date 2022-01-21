@@ -1,3 +1,29 @@
+- [참조 강의](#-----)
+- [What?](#what-)
+- [Why?](#why-)
+    + [Self-Describtive Message](#self-describtive-message)
+    + [Hateoas](#hateoas)
+- [How To?](#how-to-)
+    + [Self-Describtive Message](#self-describtive-message-1)
+      - [1. 미디어 타입을 정의하고 IANA에 등록하여 리턴의 Content-Type으로 사용할 수 있다.](#1--------------iana-----------content-type-----------)
+      - [2. 응답 헤더에 링크를 추가한다.](#2----------------)
+      - [3. HAL의 링크 데이터에 profile링크를 추가 (2번의 불안정성을 해결하기 위한 대안)](#3-hal----------profile--------2--------------------)
+    + [Hateoas](#hateoas-1)
+      - [1. 데이터에 링크를 나타내는 필드를 추가.](#1---------------------)
+      - [2. 링크 헤더나 Location을 제공.](#2--------location----)
+- [Need To?](#need-to-)
+      - [응답 데이터에 link표현을 공통적으로 처리하기위한 라이브러리.](#--------link----------------------)
+      - [Self-Describtive하기 위해서는 API를 설명할 수 있는 문서가 필요하다.](#self-describtive--------api-------------------)
+- [결과 예시](#-----)
+      - [Situation](#situation)
+      - [Json Result](#json-result)
+      - [Self-Describtive 확인](#self-describtive---)
+- [Environment](#environment)
+      - [Dev](#dev)
+      - [Real](#real)
+      - [Dependencies](#dependencies)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 # 참조 강의
 - https://www.inflearn.com/course/spring_rest-api/dashboard
@@ -57,7 +83,7 @@
 
 # 결과 예시
 
-#### situation
+#### Situation
 - 로그인 한 사용자가 새로운 이벤트 정보를 등록한다.
 
 #### Json Result
@@ -103,11 +129,11 @@
 # Environment
 <img src="https://img.shields.io/badge/SpringBoot-2.6.2-rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/gradle-7.3.2 -rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/Junit-5.8.2-rgb(243, 156, 18).svg" />
 
-#### dev
+#### Dev
 <img src="https://img.shields.io/badge/h2-blue.svg" />
 
-#### real
+#### Real
 <img src="https://img.shields.io/badge/postgresql-red.svg" />
 
-#### dependencies
+#### Dependencies
 - <a href="https://github.com/Pawer0223/restAPI/blob/master/build.gradle">build.gradle</a>

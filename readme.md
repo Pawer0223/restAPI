@@ -55,3 +55,15 @@
 ~~~
 
 # Environment
+<img src="https://img.shields.io/badge/SpringBoot-2.6.2-rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/gradle-7.3.2 -rgb(243, 156, 18).svg" /> <img src="https://img.shields.io/badge/Junit-5.8.2-rgb(243, 156, 18).svg" />
+
+#### dev
+<img src="https://img.shields.io/badge/h2-blue.svg" />
+
+#### real
+<img src="https://img.shields.io/badge/postgresql-red.svg" />
+
+#### dependencies
+- <a href="https://github.com/Pawer0223/restAPI/blob/master/build.gradle">build.gradle</a>
+
+# 결과 확인

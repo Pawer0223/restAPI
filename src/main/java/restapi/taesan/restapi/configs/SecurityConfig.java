@@ -43,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder);
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().mvcMatchers("/docs/index.html");
-//        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-//    }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().mvcMatchers("/docs/index.html");
+        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {

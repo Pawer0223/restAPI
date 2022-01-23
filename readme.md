@@ -4,12 +4,12 @@
 - https://gitlab.com/whiteship
 
 # What?
-- Self-Describtive Message와 Hateoas를 만족하는 REST API 개발하기
+- Self-Descriptive Message와 Hateoas를 만족하는 REST API 개발하기
 
 # Why?
-현재 REST API로 불리는 대부분의 API가 Self-Describtive Message와 Hateoas를 만족하지 않는다.
+현재 REST API로 불리는 대부분의 API가 Self-Descriptive Message와 Hateoas를 만족하지 않는다.
 
-### Self-Describtive Message
+### Self-Descriptive Message
 - Http의 응답이 무엇을 의미하는지 스스로 설명이 가능해야 한다.
 
 ### Hateoas
@@ -20,7 +20,7 @@
   - 즉, 로그인회원과 비 로그인 회원이 이동할 수 있는 링크정보는 다르다.
 
 # How To?
-### Self-Describtive Message
+### Self-Descriptive Message
 
 #### 1. 미디어 타입을 정의하고 IANA에 등록하여 리턴의 Content-Type으로 사용할 수 있다.
 #### 2. 응답 헤더에 링크를 추가한다.
@@ -47,7 +47,7 @@
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 ~~~
 
-#### Self-Describtive하기 위해서는 API를 설명할 수 있는 문서가 필요하다.
+#### Self-Descriptive하기 위해서는 API를 설명할 수 있는 문서가 필요하다.
 - 이 문서에 대한 정의는 개발자가 직접해야 한다.
 - 다만 이러한 문서화 작업을 편리할 수 있게 도와주는 라이브러리를 사용하자.
 - gradle 의존성 추가
@@ -62,7 +62,7 @@
 
 #### Json Result
 - `_links` 필드를 통해 hateoas를 만족.
-- `_links.profile` 필드를 통해 self-describtive를 만족
+- `_links.profile` 필드를 통해 self-descriptive를 만족
   - 해당 필드의 링크를 통해, 현재의 응답을 이해할 수 있는 문서를 확인할 수 있다.(restdocs를 통해 만들어 놓아야 함)
 ~~~ json
 {
@@ -97,7 +97,7 @@
 }
 ~~~
 
-#### Self-Describtive 확인
+#### Self-Descriptive 확인
 ![image](https://user-images.githubusercontent.com/26343023/150488777-b4368b33-6a8b-4191-81ca-f04174cd3318.png)
 
 # Environment
